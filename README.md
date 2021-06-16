@@ -21,7 +21,7 @@ brew install gpg gpg2 pinentry-mac
 
 ```
 mkdir -m 0700 ~/.gnupg
-echo 'pinentry-program /usr/local/bin/pinentry-mac' | tee '~/.gnupg/gpg-agent.conf'
+echo 'pinentry-program /usr/local/bin/pinentry-mac' | tee ~/.gnupg/gpg-agent.conf
 pkill -TERM gpg-agent
 ```
 
