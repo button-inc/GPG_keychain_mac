@@ -52,3 +52,30 @@ gpg: encrypted with rsa4096 key, ID 3AF58C6962796950, created 2019-06-18
       "Koshatul <koshatul@users.noreply.github.com>"
 test
 ```
+
+### additional steps for M1 apple silicon users
+
+Homebrew on M1 mac changes the install directory of all of its installs. If still getting errors about `pinentry` I recomend the following changes to your `gpg-agent.conf` file:
+
+#1. Find the location of `pinentry`
+
+```shell
+$ which -a pinentry
+```
+
+#2. add that line to the `gpg-agent.conf` file
+```shell
+pinentry-program <line>
+```
+
+#3. Comment out the existing `pinentry-program` line
+
+#4. Kill the exist gpg-agent process
+```shell
+$ killall gpg-agent
+```
+
+#5. Restart gpg-agent
+```shell
+$ gpg-agent --daemon
+```
